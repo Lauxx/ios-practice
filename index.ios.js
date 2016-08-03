@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Image, Navigator, TouchableHighlight } from 'react-native';
-
+import { TabsRoute } from 'react-router-native';
 
 export default class NavAllDay extends Component {
   
@@ -43,12 +43,8 @@ class Welcome extends Component {
     return (
         <View style = { styles.container } >
           <TouchableHighlight onPress = {this.onButtonPress.bind(this)}>
-            <Text> Welcome to my IOS App </Text>
+            <Text style={ styles.button } > Welcome to my IOS App </Text>
           </TouchableHighlight> 
-          <Text  style = { styles.welcome }> 
-            Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.
-
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod.</Text>
         </View>
       )
   }
@@ -65,12 +61,8 @@ class Second extends Component {
     return (
       <View style = { styles.container }> 
         <TouchableHighlight onPress = {this.onButtonPress.bind(this)}>
-            <Text> This is our second page. </Text>
+            <Text style={ styles.button }> This is our second page. </Text>
           </TouchableHighlight> 
-          <Text style = { styles.welcome }> 
-            Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.
-
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod.</Text>
       </View>
       )
   }
@@ -84,23 +76,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'powderblue',
+    backgroundColor: 'turquoise',
   },
-  welcome: {
-    fontSize: 16,
-    textAlign: 'justify',
-    marginTop: 50,
-    padding: 10,
-  },
-  picture: {
-    flex: 2,
-    height: 300, 
-    width: 340, 
-  },
-  box: {
-    borderColor: 'blue',
-    borderWidth: 4,
-  },
+  button: {
+    borderWidth: 2,
+    borderColor: "white",
+    padding: 10
+  }
+  
 });
 
 AppRegistry.registerComponent('awesomeproject', () => NavAllDay);
