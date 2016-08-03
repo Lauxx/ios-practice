@@ -2,8 +2,8 @@
 //View = container; Text, Image = able to create some static information
 
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Image, Navigator, TouchableHighlight } from 'react-native';
-import { TabsRoute } from 'react-router-native';
+import { AppRegistry, StyleSheet, Text, View, Image, Navigator, TouchableHighlight, TouchableOpacity, TextInput } from 'react-native';
+
 
 export default class NavAllDay extends Component {
   
@@ -42,9 +42,13 @@ class Welcome extends Component {
   render(){
     return (
         <View style = { styles.container } >
-          <TouchableHighlight onPress = {this.onButtonPress.bind(this)}>
-            <Text style={ styles.button } > Welcome to my IOS App </Text>
-          </TouchableHighlight> 
+          <Text> Welcome to my IOS App </Text>
+          <TextInput style={styles.textEdit} placeholder="Email"/>
+          <TextInput style={styles.textEdit} placeholder="Username"/>
+          <TextInput style={styles.textEdit} placeholder="Password" secureTextEntry={true}/>
+          <TouchableOpacity onPress = {this.onButtonPress.bind(this)}>
+            <Text style={ styles.button } > Login </Text>
+          </TouchableOpacity>
         </View>
       )
   }
@@ -60,9 +64,9 @@ class Second extends Component {
   render(){
     return (
       <View style = { styles.container }> 
-        <TouchableHighlight onPress = {this.onButtonPress.bind(this)}>
+        <TouchableOpacity onPress = {this.onButtonPress.bind(this)}>
             <Text style={ styles.button }> This is our second page. </Text>
-          </TouchableHighlight> 
+          </TouchableOpacity> 
       </View>
       )
   }
@@ -81,7 +85,21 @@ const styles = StyleSheet.create({
   button: {
     borderWidth: 2,
     borderColor: "white",
-    padding: 10
+    borderRadius: 20,
+    padding: 13,
+    marginTop: 45,
+    paddingLeft: 20
+  },
+  textEdit: {
+    height: 35, 
+    borderColor: "white",
+    borderRadius: 18,
+    borderWidth: 2,
+    marginLeft: 20,
+    marginRight: 20,
+    textAlign: 'center',
+    marginTop: 15,
+    color: 'black'
   }
   
 });
