@@ -83,7 +83,7 @@ class Entry extends Component {
 class Another extends Component{
   render(){
     return (
-      <View style={ styles.entryContainer }>
+      <View style={ styles.anotherContainer }>
         <Text> Some words are happening. {this.props.element} {this.props.betterProp} </Text>
       </View>
       )
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'turquoise',
+    backgroundColor: 'teal',
     padding: 10
   },
   entryContainer: {
@@ -109,6 +109,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'turquoise',
+    padding: 10,
+    justifyContent:'center'
+
+  },
+  anotherContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'skyblue',
     padding: 10,
     justifyContent:'center'
 
