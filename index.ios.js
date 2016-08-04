@@ -2,101 +2,131 @@
 //View = container; Text, Image = able to create some static information
 
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Image, Navigator, TouchableHighlight, TouchableOpacity, TextInput } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Image, TouchableHighlight, TouchableOpacity, TextInput, NavigatorIOS } from 'react-native';
+
 
 
 export default class NavAllDay extends Component {
-  
-
-  render() {
-    return (
-      <Navigator
-        initialRoute = {{ id: 'Welcome'}}
-        renderScene = { this.navigatorRenderScene }
-        configureScene = {(route, routeStack) => 
-          Navigator.SceneConfigs.FloatFromRight}
-        
-      />
-    );
+  render(){
+      return(
+        <NavigatorIOS style={styles.navContainer}
+          initialRoute={{
+            title: "My IOS",
+            component: Welcome
+          }} />
+    )
   }
-
-  navigatorRenderScene(route, navigator){
-    _navigator = navigator;
-    switch(route.id){
-      case 'Welcome':
-        return (<Welcome navigator={ navigator } title="Welcome" />);
-      case 'Second':
-        return (<Second navigator={ navigator } title="Second" /> );  
-    }
-  }
-
 };
 
+
+
+
+
+
+
 class Welcome extends Component {
-  onButtonPress(){
+  doSomething(){
     this.props.navigator.push({
-      id: 'Second'
+      title: 'Entry',
+      component: Entry,
+      passProps: { anElement: 'Your value here.'}
     });
   }
 
   render(){
     return (
-        <View style = { styles.container } >
-          <Text> Welcome to my IOS App </Text>
-          <TextInput style={styles.textEdit} placeholder="Email"/>
-          <TextInput style={styles.textEdit} placeholder="Username"/>
-          <TextInput style={styles.textEdit} placeholder="Password" secureTextEntry={true}/>
-          <TouchableOpacity onPress = {this.onButtonPress.bind(this)}>
-            <Text style={ styles.button } > Login </Text>
+        <View style = { styles.welcomeContainer } >
+          <TouchableOpacity
+            style={ styles.button } 
+            onPress = {() => this.doSomething() }
+            underlayColor={'#bbbbbb'}>
+            <Text > 
+                Login 
+            </Text>
           </TouchableOpacity>
         </View>
       )
   }
 };
 
-class Second extends Component {
-  onButtonPress(){
+          
+
+
+
+
+
+class Entry extends Component {
+  doSomething(){
     this.props.navigator.push({
-      id: 'Welcome'
+      title: 'Another',
+      component: Another,
+      passProps: { betterProp: 'Hey Girl!', element: this.props.anElement }
     });
   }
 
   render(){
     return (
-      <View style = { styles.container }> 
-        <TouchableOpacity onPress = {this.onButtonPress.bind(this)}>
-            <Text style={ styles.button }> This is our second page. </Text>
-          </TouchableOpacity> 
+      <View style={ styles.entryContainer }> 
+        <TouchableOpacity 
+            style={ styles.button } 
+            onPress = {() => this.doSomething() }
+            underlayColor={'#bbbbbb'}>
+            <Text> Next </Text>
+          </TouchableOpacity>
       </View>
       )
   }
-}
+};
+
+
+
+class Another extends Component{
+  render(){
+    return (
+      <View style={ styles.entryContainer }>
+        <Text> Some words are happening. {this.props.element} {this.props.betterProp} </Text>
+      </View>
+      )
+  }
+};
 
 
 
 
 const styles = StyleSheet.create({
-  container: {
+  navContainer: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  welcomeContainer: {
+    flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'turquoise',
+    padding: 10
+  },
+  entryContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'turquoise',
+    padding: 10,
+    justifyContent:'center'
+
   },
   button: {
+    flex: 1, 
+    flexDirection: 'row',
     borderWidth: 2,
     borderColor: "white",
     borderRadius: 20,
     padding: 13,
-    marginTop: 45,
-    paddingLeft: 20
+    justifyContent: 'center'
   },
   textEdit: {
     height: 35, 
     borderColor: "white",
     borderRadius: 18,
     borderWidth: 2,
-    marginLeft: 20,
-    marginRight: 20,
     textAlign: 'center',
     marginTop: 15,
     color: 'black'
