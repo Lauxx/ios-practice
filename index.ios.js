@@ -22,10 +22,8 @@ export default class NavAllDay extends Component {
 
 
 
-
-
 class Welcome extends Component {
-  doSomething(){
+  goToEntry(){
     this.props.navigator.push({
       title: 'Entry',
       component: Entry,
@@ -33,15 +31,31 @@ class Welcome extends Component {
     });
   }
 
+  goToAnother(){
+    this.props.navigator.push({
+      title: "Another",
+      component: Another,
+      passProps: { betterProp: 'Hey Girl!', element: this.props.anElement }
+    })
+  }
+
   render(){
     return (
         <View style = { styles.welcomeContainer } >
           <TouchableOpacity
             style={ styles.button } 
-            onPress = {() => this.doSomething() }
+            onPress = {() => this.goToEntry() }
             underlayColor={'#bbbbbb'}>
             <Text > 
-                Login 
+                Entry 
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={ styles.button } 
+            onPress = {() => this.goToAnother() }
+            underlayColor={'#bbbbbb'}>
+            <Text > 
+                Another
             </Text>
           </TouchableOpacity>
         </View>
@@ -53,26 +67,12 @@ class Welcome extends Component {
 
 
 
-
-
 class Entry extends Component {
-  doSomething(){
-    this.props.navigator.push({
-      title: 'Another',
-      component: Another,
-      passProps: { betterProp: 'Hey Girl!', element: this.props.anElement }
-    });
-  }
 
   render(){
     return (
       <View style={ styles.entryContainer }> 
-        <TouchableOpacity 
-            style={ styles.button } 
-            onPress = {() => this.doSomething() }
-            underlayColor={'#bbbbbb'}>
-            <Text> Next </Text>
-          </TouchableOpacity>
+            <Text> I am the entry page. </Text>
       </View>
       )
   }
@@ -124,7 +124,6 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1, 
-    flexDirection: 'row',
     borderWidth: 2,
     borderColor: "white",
     borderRadius: 20,
