@@ -35,13 +35,14 @@ class Welcome extends Component {
     this.props.navigator.push({
       title: "Another",
       component: Another,
-      passProps: { betterProp: 'Hey Girl!', element: this.props.anElement }
+      passProps: { betterProp: 'Hey Girl!' }
     })
   }
 
   render(){
     return (
         <View style = { styles.welcomeContainer } >
+        <View >
           <TouchableOpacity
             style={ styles.button } 
             onPress = {() => this.goToEntry() }
@@ -50,6 +51,8 @@ class Welcome extends Component {
                 Entry 
             </Text>
           </TouchableOpacity>
+         </View>
+         <View  > 
           <TouchableOpacity
             style={ styles.button } 
             onPress = {() => this.goToAnother() }
@@ -58,6 +61,7 @@ class Welcome extends Component {
                 Another
             </Text>
           </TouchableOpacity>
+        </View>  
         </View>
       )
   }
@@ -99,7 +103,8 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     flex: 1,
-    flexDirection: 'row',
+    paddingTop: 150,
+    flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: 'teal',
     padding: 10
@@ -123,21 +128,14 @@ const styles = StyleSheet.create({
 
   },
   button: {
-    flex: 1, 
+    flex: 1,
+    width: 90,
+    margin: 10,
     borderWidth: 2,
     borderColor: "white",
     borderRadius: 20,
-    padding: 13,
-    justifyContent: 'center'
-  },
-  textEdit: {
-    height: 35, 
-    borderColor: "white",
-    borderRadius: 18,
-    borderWidth: 2,
-    textAlign: 'center',
-    marginTop: 15,
-    color: 'black'
+    padding: 10,
+    alignItems: 'center'
   }
   
 });
