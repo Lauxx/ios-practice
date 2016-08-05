@@ -9,9 +9,9 @@ import { AppRegistry, StyleSheet, Text, View, Image, TouchableHighlight, Touchab
 export default class NavAllDay extends Component {
   render(){
       return(
-        <NavigatorIOS style={styles.navContainer}
+        <NavigatorIOS style={ styles.navContainer }
           initialRoute={{
-            title: "My IOS",
+            title: "Welcome",
             component: Welcome
           }} />
     )
@@ -47,7 +47,7 @@ class Welcome extends Component {
             style={ styles.button } 
             onPress = {() => this.goToEntry() }
             underlayColor={'#bbbbbb'}>
-            <Text > 
+            <Text style={ styles.text }> 
                 Entry 
             </Text>
           </TouchableOpacity>
@@ -57,7 +57,7 @@ class Welcome extends Component {
             style={ styles.button } 
             onPress = {() => this.goToAnother() }
             underlayColor={'#bbbbbb'}>
-            <Text > 
+            <Text style={ styles.text }> 
                 Another
             </Text>
           </TouchableOpacity>
@@ -99,21 +99,21 @@ class Another extends Component{
 
 const styles = StyleSheet.create({
   navContainer: {
-    flex: 1,
+    flex: 1
   },
   welcomeContainer: {
     flex: 1,
     paddingTop: 150,
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: 'teal',
+    backgroundColor: '#2C3E50',
     padding: 10
   },
   entryContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'turquoise',
+    backgroundColor: '#FDE3A7',
     padding: 10,
     justifyContent:'center'
 
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'skyblue',
+    backgroundColor: '#C8F7C5',
     padding: 10,
     justifyContent:'center'
 
@@ -132,10 +132,14 @@ const styles = StyleSheet.create({
     width: 90,
     margin: 10,
     borderWidth: 2,
-    borderColor: "white",
+    borderColor: "#C8F7C5",
     borderRadius: 20,
     padding: 10,
     alignItems: 'center'
+  },
+  text: {
+    color: 'white',
+    fontFamily: 'Avenir'
   }
   
 });
